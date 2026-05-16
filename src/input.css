@@ -1,0 +1,35 @@
+.dropdown{
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.dropdown-item {
+  padding: 5px 5px;
+  cursor: pointer;
+  color: #00ff99;
+}
+
+.dropdown-text:hover {
+  color: rgb(238, 252, 45);
+}
+
+.inputText {
+    position:relative;
+    font-size: 0.9em;
+    background: linear-gradient(80deg, #413164, #7ad3b1);
+    padding: 3px;
+    display: inline-block;
+    border-radius: 9999em;
+    border: none;
+    text-align: center;
+    color: #413164;
+    height: 50px;
+}
+
+.inputText::placeholder {
+    color: #413164;
+    opacity: 0.7;
+}

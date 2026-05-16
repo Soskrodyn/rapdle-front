@@ -1,0 +1,81 @@
+.player {
+  background: #111;
+  padding: clamp(12px, 2vw, 20px);
+  border-radius: clamp(8px, 1vw, 20px);
+  width: clamp(260px, 40vw, 500px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.2vw, 15px);
+}
+
+/* Play Button */
+.playBtn {
+  background: #7ad3b1;
+  color: #413164;
+  padding: clamp(8px, 1vw, 20px) clamp(16px, 2vw, 40px);
+  border-radius: clamp(6px, 0.8vw, 16px);
+  border: none;
+  cursor: pointer;
+  font-size: clamp(14px, 1.4vw, 28px);
+}
+
+/* Timeline (Zick-Zack) */
+.timeline {
+  width: 100%;
+  height: clamp(12px, 1.2vw, 25px);
+  appearance: none;
+  background: repeating-linear-gradient(
+    135deg,
+    #00ff99 0px,
+    #00ff99 clamp(3px, 0.4vw, 8px),
+    #413164 clamp(3px, 0.4vw, 8px),
+    #413164 clamp(6px, 0.8vw, 16px)
+  );
+  border-radius: clamp(3px, 0.5vw, 8px);
+  cursor: pointer;
+}
+
+.timeline::-webkit-slider-thumb {
+  appearance: none;
+  width: clamp(10px, 1vw, 22px);
+  height: clamp(20px, 2vw, 50px);
+  background: rgb(238, 252, 45);
+  border-radius: 50%;
+}
+
+/* Volume Slider */
+.volume {
+  width: clamp(100px, 20vw, 150px);
+  height: clamp(6px, 1vw, 12px);
+  appearance: none;
+  background: repeating-linear-gradient(
+    135deg,
+    #00ff99 0px,
+    #00ff99 clamp(3px, 0.4vw, 8px),
+    #413164 clamp(3px, 0.4vw, 8px),
+    #413164 clamp(6px, 0.8vw, 16px)
+  );
+  border-radius: clamp(3px, 0.5vw, 8px);
+  cursor: pointer;
+}
+
+.volume::-webkit-slider-thumb {
+  appearance: none;
+  width: clamp(10px, 1vw, 14px);
+  height: clamp(14px, 1.4vw, 30px);
+  background: rgb(238, 252, 45);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Controls Layout */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(8px, 1vw, 20px);
+}
+
+icon{
+  font-size: clamp(20px, 2vw, 30px);
+}
