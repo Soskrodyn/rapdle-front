@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Music from './music'
-import Input from './Input'
+import Input from './input'
 import './App.css'
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import seedrandom from "seedrandom";
