@@ -34,7 +34,7 @@ function App() {
     return id;
   });
 
-  const API_BASE = "http://localhost:5095/api/song";
+const API_BASE = "https://rapdle-api.onrender.com/api/song";
 
   // Load playlist
   useEffect(() => {
