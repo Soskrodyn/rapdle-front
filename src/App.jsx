@@ -97,21 +97,29 @@ const API_BASE = "https://rapdle-api.onrender.com/api/song";
 
   // Calculate song for selected day
   useEffect(() => {
-    if (!playlistOptions.length || !days.length) return;
+    if (!days.length || !userId) return;
 
     const date = days[dayIndex];
-    const seed = date.hashCode();
-    const rng = seedrandom(seed);
-    const index = Math.floor(rng() * playlistOptions.length);
-
-    setSong(playlistOptions[index]);
+    
+    // Fetch the daily song with cooldown logic from server
+    fetch(`${API_BASE}/daily/${userId}/${date}`)
+      .then(res => res.json())
+      .then(data => setSong(data))
+      .catch(err => {
+        console.error("Failed to fetch daily song:", err);
+        // Fallback: use client-side calculation if server fails
+        const seed = date.hashCode();
+        const rng = seedrandom(seed);
+        const index = Math.floor(rng() * playlistOptions.length);
+        setSong(playlistOptions[index]);
+      });
 
     if (history[date]) {
       setGuesses(history[date].guesses);
     } else {
       setGuesses([]);
     }
-  }, [dayIndex, playlistOptions, days]);
+  }, [dayIndex, days, userId]);
 
   // Confirm guess
   function handleConfirm() {
