@@ -196,6 +196,8 @@ const API_BASE = "https://rapdle-api.onrender.com/api/song";
           playlist={playlistOptions}
           onSelect={(title, artist) => setGuess(`${title} – ${artist}`)}
           clearSignal={guesses.length}
+          history={history}
+          selectedDate={days[dayIndex]}
         />
 
         <button onClick={handleConfirm}>Confirm</button>
