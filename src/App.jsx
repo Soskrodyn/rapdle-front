@@ -3,18 +3,6 @@ import Music from './music'
 import Input from './input'
 import './App.css'
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import seedrandom from "seedrandom";
-
-// Hash-Funktion für deterministische Seeds
-String.prototype.hashCode = function () {
-  var hash = 0, i, chr;
-  for (i = 0; i < this.length; i++) {
-    chr = this.charCodeAt(i);
-    hash = ((hash << 5) - hash) + chr;
-    hash |= 0;
-  }
-  return hash;
-};
 
 function App() {
   const [song, setSong] = useState(null);
@@ -97,29 +85,21 @@ const API_BASE = "https://rapdle-api.onrender.com/api/song";
 
   // Calculate song for selected day
   useEffect(() => {
-    if (!days.length || !userId) return;
+    if (!days.length) return;
 
     const date = days[dayIndex];
-    
-    // Fetch the daily song with cooldown logic from server
-    fetch(`${API_BASE}/daily/${userId}/${date}`)
+
+    fetch(`${API_BASE}/daily/${date}`)
       .then(res => res.json())
       .then(data => setSong(data))
-      .catch(err => {
-        console.error("Failed to fetch daily song:", err);
-        // Fallback: use client-side calculation if server fails
-        const seed = date.hashCode();
-        const rng = seedrandom(seed);
-        const index = Math.floor(rng() * playlistOptions.length);
-        setSong(playlistOptions[index]);
-      });
+      .catch(err => console.error("Failed to fetch daily song:", err));
 
     if (history[date]) {
       setGuesses(history[date].guesses);
     } else {
       setGuesses([]);
     }
-  }, [dayIndex, days, userId]);
+  }, [dayIndex, days]);
 
   // Confirm guess
   function handleConfirm() {

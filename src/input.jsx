@@ -36,8 +36,8 @@ function Input({ playlist, onSelect , clearSignal, history = {}, selectedDate })
         excludedSongs.add(entry.solution.toLowerCase());
       }
       
-      // Check 10-day cooldown for artists
-      if (daysDiff >= 0 && daysDiff < 10) {
+      // Check 20-day cooldown for artists
+      if (daysDiff >= 0 && daysDiff < 20) {
         if (artist && artist.trim()) {
           excludedArtists.add(artist.trim().toLowerCase());
         }
@@ -66,7 +66,7 @@ function Input({ playlist, onSelect , clearSignal, history = {}, selectedDate })
         // Exclude songs in 100-day cooldown
         if (excludedSongs.has(songFullName.toLowerCase())) return false;
         
-        // Exclude songs with artists in 10-day cooldown
+        // Exclude songs with artists in 20-day cooldown
         if (song.artist?.name && excludedArtists.has(song.artist.name.trim().toLowerCase())) {
           return false;
         }
